@@ -31,7 +31,7 @@ router.post("/login",async (req,res)=>{
    
         const user=await User.findOne({email:req.body.email})
         !user&&res.status(401).json("wrong password or username")
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAA")
+        
 
         const bytes=CryptoJS.AES.decrypt(user.password,process.env.SECRET_KEY)
         const originalPassword=bytes.toString(CryptoJS.enc.Utf8)
